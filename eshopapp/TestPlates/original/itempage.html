@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% for item in data['item'] %}
+
+  <h1 style="text-align: center;">Item: {{item[4]}}</h1>
+  {% endfor %}
+
+
+  <hr>
+
+    <ul class="buttonTopRight">
+    {% if g.user %}
+      {{ g.user[4] }}
+      <br/>
+      <a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Log In</a>
+      <br/>
+      <a href="{{ url_for('auth.register') }}">Register</a>
+      {% endif %}
+
+
+  </ul>
+    <ul class="action-button1" > <a href="{{ url_for('mainpage.index') }}">Main page</a></ul>
+
+
+
+{% endblock %}
+
+{% block content %}
+  {% for item in data['item'] %}
+    <article>
+      <header>
+        <div>
+          <center>
+          <h1>Item description!</h1>
+          </center>
+
+        </div>
+
+      </header>
+
+        <div class="about">
+          <center>
+        <img src="{{ url_for('static', filename=item[6]) }}"/>
+
+        <div class="action-button"><a href="{{ url_for('mainpage.addToBasket') }}?item_ID={{item[3]}}">Add to basket!</a></div>
+        </center>
+        <div class="prod-description">
+          <h4>Item Description</h4>
+          <p>Item id: {{item[3]}}</p>
+          <p>Category id of the item:  {{ item[0] }}</p>
+          <p>The category name: {{ item[1] }}</p>
+          <p>Item media path for this item: {{item[6]}}</p>
+          <p>Category description: {{item[2]}}</p>
+          <p>How many is in stock: {{item[5]}}</p>
+          <p>Price for this item is: {{item[7]}}</p>
+          </div>
+
+
+
+
+      <div class="about" style="text-align: left;">
+
+        <!--<button class="action-button"><a href="{{ url_for('mainpage.addToBasket') }}?item_ID={{item[3]}}">Add to basket!</a></button>-->
+        <h1>Reviews</h1>
+        <h1>Average rating: {{data['avg'][0]}}</h1>
+        {% for review in data['reviews'] %}
+        <p>Review #{{review[1]}}</p>
+        Rating: {{review[2]}}<br/><br/>
+        "{{review[3]}}"
+
+        {% if not loop.last %}
+        <hr>
+        {% endif %}
+        {% endfor %}
+
+      </div>
+      </div>
+
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+

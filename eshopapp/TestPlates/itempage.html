@@ -1,0 +1,254 @@
+<!doctype html>
+
+<head>
+<title> - Flaskr</title>
+<link rel="stylesheet" href="style.css">
+<!--<nav>
+  <h1></h1>
+  <ul>
+    {% if g.user %}
+      <li><span>{{ g.user['login'] }}</span>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <li><a href="{{ url_for('auth.register') }}">Register</a>
+      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+    {% endif %}
+  </ul>
+</nav>-->
+
+</head>
+
+<body>
+<div class="section">
+
+<!--
+  <header>
+     
+
+  <hr>
+
+    <ul class="buttonTopRight">
+    
+      <br/>
+      <a href="{{ url_for('auth.logout') }}">Log Out</a>
+   
+      <a href="{{ url_for('auth.login') }}">Log In</a>
+      <br/>
+      <a href="{{ url_for('auth.register') }}">Register</a>
+      
+  </ul>
+    <ul class="buttonTopLeft" > <a href="{{ url_for('mainpage.index') }}">Main page</a></ul>
+  </header>  -->
+  
+ <!-- Header Section Start -->
+    <div class="header-section section">  
+ <!-- Header Top Start -->
+        <div class="header-top">
+            <div class="container1">
+                <div class="row">
+                    <div class="col">
+
+                      
+<!-- Header Top Wrapper Start -->
+                        <div class="header-top-wrapper">
+                            <div class="row">
+							<div class="col-md-4 col-12"></div>
+                                <!-- Header Logo -->
+                                <div class="header-logo col-md-4 col-12">
+                                    <a href="index.html" class="logo"><img src="logo.jpg" alt="logo"></a>
+                                </div>
+							<div class="col-md-4 col-12"></div>
+                      </div>
+                        </div><!-- Header Top Wrapper End -->
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- Header Top End -->  
+  
+     <!-- Header Bottom Start -->
+        <div class="header-bottom section">
+            <div class="container">
+                <div class="row">
+                   
+                    <!-- Header Bottom Wrapper Start -->
+                    <div class="header-bottom-wrapper text-center col">
+
+                        <!-- Main Menu -->
+                        <nav id="main-menu" class="main-menu">
+                            <ul>
+                                <li><a href="index.html">home</a></li>
+                                <li class="active"><a href="shop.html">shop</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="shop.html">shop page</a></li>
+                                        <li class="active"><a href="product-details.html">product details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="about.html">about</a></li>
+                                <li><a href="#">pages</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="cart.html">cart</a></li>
+                                        <li><a href="checkout.html">checkout</a></li>
+                                        <li><a href="wishlist.html">wishlist</a></li>
+										<li><a href="under-construction.html">Under Construction</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="blog.html">blog</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="blog.html">blog page</a></li>
+                                        <li><a href="blog-details.html">blog details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html">contact</a></li>
+                            </ul>
+                        </nav>
+
+                    </div><!-- Header Bottom Wrapper End -->
+                    
+                </div>
+            </div>
+        </div><!-- Header Bottom End -->
+	</div><!-- Header Section End -->	
+ 
+ 
+  <!-- Page Banner Section Start-->
+    <div class="page-banner-section section banner-margin" style="background-image:url( banner.jpg)">
+        <div class="container">
+            <div class="row">
+                
+                <!-- Page Title Start -->
+                <div class="page-title text-center col">
+                    <h1>Product details</h1>
+                </div><!-- Page Title End -->
+                
+            </div>
+        </div>
+    </div><!-- Page Banner Section End-->
+ 
+ 
+ 
+    <div class="flash">{{ message }}</div>
+  
+	
+
+	
+	
+	 <!-- Product Section Start-->
+    <div class="product-section section pt-110 pb-90">
+        <div class="container">
+            
+            <!-- Product Wrapper Start-->
+            <div class="row">
+                
+                <!-- Product Image & Thumbnail Start -->
+                <div class="col-lg-7 col-12 mb-30">
+                   
+                    <!-- Product Thumbnail -->
+                    <div class="single-product-thumbnail product-thumbnail-slider float-left">
+                        
+                    </div>
+                    
+                    <!-- Product Image -->
+                    <div class="single-product-image product-image-slider fix">
+                        <div class="single-image"><img src="2.jpg" alt=""></div>
+                        
+                    </div>
+                    
+                </div><!-- Product Image & Thumbnail End -->
+                
+                <!-- Product Content Start -->
+                <div class="single-product-content col-lg-5 col-12 mb-30">
+                   
+                    <!-- Title -->
+                    <h1 class="title">Item[4]</h1>
+                    
+                    <!-- Product Rating -->
+                    <span class="product-rating">
+                       
+                    </span>
+                    
+                    <!-- Price -->
+                    <span class="product-price">€ 120.0</span>
+                    
+                                                  
+                   <div>
+					<span class="table-span">Data sheet</span>
+				
+				</div>
+			
+			<!-- Tab panes -->
+                <div class="tab-content col-12 col-tab">
+					<div class="pro-info-tab tab-pane" >
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr class="odd">
+                                    <td class="td-title">Item id</td>
+                                    <td>id</td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="td-title">Category</td>
+                                    <td>Phine</td>
+                                </tr>
+								<tr class="odd">
+                                    <td class="td-title">Category description</td>
+                                    <td>Phine  phone</td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="td-title">In stock</td>
+                                    <td>5</td>
+                                </tr>
+								
+                            </tbody>
+                        </table>
+                    </div>
+               </div>
+              
+                    
+                   <!-- Quantity & Cart Button -->
+                    <div class="product-quantity-cart fix">
+                        <div class="product-quantity">
+                            <input type="text" value="0" name="qtybox">
+                        </div>
+                        <button class="add-to-cart">add to cart</button>
+                    </div>
+                    
+                </div><!-- Product Content End -->
+                
+            </div><!-- Product Wrapper End-->
+			
+			 
+            
+            <!-- Product Additional Info Start-->
+            <div >
+				
+              
+
+               <div class="row">
+					<span class="table-span">Reviews</span>
+				
+				</div>
+                    
+				<div  >
+				<h1 class="navy">Average rating: 8</h1>
+        
+					<p>Review #{{review[1]}}</p>
+					Rating: review[2]<br/><br/>
+					"{{review[3]}}"
+				</div>
+				     
+                
+            </div><!-- Product Additional Info End-->
+			 <div class="pro-info-tab tab-pane" id="reviews" >
+                        <a class="button mt-30" href="#">Write your review!</a>
+                </div>
+		        
+        
+    </div><!-- Product Section End-->
+	
+				
+
+ </div>
+ 
+ 
+
+</body>

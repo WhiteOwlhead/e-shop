@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+
+   <!-- Header Section Start -->
+    <div class="header-section section">
+ <!-- Header Top Start -->
+        <div class="header-top">
+            <div class="container1">
+                <div class="row">
+                    <div class="col">
+
+
+<!-- Header Top Wrapper Start -->
+                        <div class="header-top-wrapper">
+                            <div class="row">
+							<div class="col-md-4 col-12"></div>
+                                <!-- Header Logo -->
+                                <div class="header-logo col-md-4 col-12">
+                                    <a href="{{ url_for('mainpage.index') }}" class="logo"><img src="{{ url_for('static', filename='logo.jpg') }}" alt="logo"></a>
+                                </div>
+							<div class="col-md-4 col-12"></div>
+                      </div>
+                        </div><!-- Header Top Wrapper End -->
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- Header Top End -->
+
+     <!-- Header Bottom Start -->
+
+        <div class="header-bottom section">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Header Bottom Wrapper Start -->
+                    <div class="header-bottom-wrapper text-center col">
+
+                        <!-- Main Menu -->
+
+                        <nav id="main-menu" class="main-menu ML_265">
+
+                            <ul>
+
+                                <li><a href="{{ url_for('mainpage.index') }}">home</a></li>
+                              <li class="active">
+    {% if g.user %}
+      <br/>
+      <a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Log In</a>
+      <br/>
+      <a class="ML" href="{{ url_for('auth.register') }}">Register</a>
+
+                                  {% endif %}  </li>
+                                <li class="active">
+                                {% if g.user %}
+                                    <a>{{ g.user[4] }} </a>
+                                {% endif %}
+
+                                </li> </ul> </nav> </div> </div> </div> </div> </div>
+    <!-- <button class="buttonTopRight">User: {{g.user[4]}}</button> -->
+
+
+{% endblock %}
+
+{% block content %}
+
+
+  {% for post in posts %}
+    <center>
+    <article class="MT_185">
+      <header>
+        <div>
+          <h1>{{ post[1] }}</h1>
+          <div class="about">Quantity:  {{ post[5] }} <br/>Item ID: {{ post[0] }} <br/> <!--AND ITEM MEDIA PATH: {{post[2]}}--></div>
+          <br/>
+          <div class="action-button">
+          <a href="{{ url_for('order.deleteRecordBasket') }}?item_ID={{post[0]}}">Delete from basket!</a>
+          <a href="{{ url_for('order.reduceQuantBasket') }}?item_ID={{post[0]}}">Reduce quantity!</a>
+          <a href="{{ url_for('order.addQuantBasket') }}?item_ID={{post[0]}}">Add quantity!</a>
+            </div>
+
+
+        </div>
+
+      </header>
+
+    </article>
+      <br/>
+    <img src="{{ url_for('static', filename=post[2]) }}"/>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+    </center>
+{% endblock %}

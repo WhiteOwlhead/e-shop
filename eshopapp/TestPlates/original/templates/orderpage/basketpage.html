@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+   <h1>{% block title %}<center>Order</center>{% endblock %}</h1>
+  <ul class="buttonTopRight">
+    {% if g.user %}
+      {{ g.user[4] }}
+      <br/>
+      <a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Log In</a>
+      <br/>
+      <a href="{{ url_for('auth.register') }}">Register</a>
+
+    {% endif %}
+  </ul>
+    <!-- <button class="buttonTopRight">User: {{g.user[4]}}</button> -->
+  <ul class="action-button1" > <a href="{{ url_for('mainpage.index') }}">Main page</a></ul>
+
+{% endblock %}
+
+{% block content %}
+
+  {% for post in posts %}
+    <center>
+    <article>
+      <header>
+        <div>
+          <h1>{{ post[1] }}</h1>
+          <div class="about">Quantity:  {{ post[5] }} <br/>Item ID: {{ post[0] }} <br/>AND ITEM MEDIA PATH: {{post[2]}}</div>
+          <ul class="buttonBasket1"><a href="{{ url_for('order.deleteRecordBasket') }}?item_ID={{post[0]}}">Delete from basket!</a></ul>
+          <ul class="buttonBasket1"><a href="{{ url_for('order.reduceQuantBasket') }}?item_ID={{post[0]}}">Reduce quantity!</a></ul>
+          <ul class="buttonBasket1"><a href="{{ url_for('order.addQuantBasket') }}?item_ID={{post[0]}}">Add quantity!</a></ul>
+
+        </div>
+
+      </header>
+
+    </article>
+    <img src="{{ url_for('static', filename=post[2]) }}"/>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+    </center>
+{% endblock %}

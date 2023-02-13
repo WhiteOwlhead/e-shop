@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Items{% endblock %}</h1>
+
+
+
+ <!-- Header Section Start -->
+    <div class="header-section section">
+ <!-- Header Top Start -->
+        <div class="header-top">
+            <div class="container1">
+                <div class="row">
+                    <div class="col">
+
+
+<!-- Header Top Wrapper Start -->
+                        <div class="header-top-wrapper">
+                            <div class="row">
+							<div class="col-md-4 col-12"></div>
+                                <!-- Header Logo -->
+                                <div class="header-logo col-md-4 col-12">
+                                    <a href="{{ url_for('mainpage.index') }}" class="logo"><img src="{{ url_for('static', filename='logo.jpg') }}" alt="logo"></a>
+                                </div>
+							<div class="col-md-4 col-12"></div>
+                      </div>
+                        </div><!-- Header Top Wrapper End -->
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- Header Top End -->
+
+     <!-- Header Bottom Start -->
+
+        <div class="header-bottom section">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Header Bottom Wrapper Start -->
+                    <div class="header-bottom-wrapper text-center col">
+
+                        <!-- Main Menu -->
+
+                        <nav id="main-menu" class="main-menu ML_265">
+
+                            <ul>
+
+                                <li><a href="{{ url_for('mainpage.index') }}">home</a></li>
+                                <li class="active"><a>shop</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{ url_for('order.basket') }}?user_ID={{data['user'][0]}}">Basket</a></li>
+                                        <li class="active"><a href="{{ url_for('order.order') }}?user_ID={{data['user'][0]}}">Checkout</a></li>
+                                    </ul>
+
+                                </li>
+                              <li class="active">
+    {% if g.user %}
+      <br/>
+      <a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Log In</a>
+      <br/>
+      <a class="ML" href="{{ url_for('auth.register') }}">Register</a>
+
+                                  {% endif %}  </li>
+                                <li class="active">
+                                {% if g.user %}
+                                    <a>{{ g.user[4] }} </a>
+                                {% endif %}
+
+                                </li> </ul> </nav>
+
+
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="section  MT">
+  <center>
+
+  <div class="dropdown">
+  <button class="dropbtn">Categories</button>
+  <div class="dropdown-content">
+    {% for category in data['categories'] %} <a href="{{ url_for('mainpage.index')}}?category_ID={{category[0]}}">{{category[1]}}</a>  {% endfor %}
+  </div>
+</div>
+    </center>
+
+  {% for post in data['posts'] %}
+    <center>
+    <article>
+      <header>
+        <div>
+          <h1><a href="{{ url_for('mainpage.item')}}?item_ID={{post[0]}}">{{ post[1] }}</a></h1>
+          <div class="about">In stock:  {{ post[2] }} <br/>Item ID: {{ post[0] }} <br/></div>
+
+        </div>
+
+      </header>
+
+    </article>
+    <img src="{{ url_for('static', filename=post[3]) }}"/>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+      </center>
+{% endblock %}
